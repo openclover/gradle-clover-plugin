@@ -1,0 +1,26 @@
+(c) Atlassian 2002-2017. This repository contains sources of Gradle Clover Plugin, distributed under Apache License 2.0.
+
+Atlassian Answers: http://answers.atlassian.com/tags/clover
+
+User documentation: http://confluence.atlassian.com/display/CLOVER/Clover+Documentation+Home
+
+Support KB: http://confluence.atlassian.com/display/CLOVERKB/Clover+Knowledge+Base+Home
+
+Developer documentation: https://extranet.atlassian.com/display/CLOVER
+
+Bug and feature tracker: https://jira.atlassian.com/browse/CLOV
+
+Atlassian Support: https://support.atlassian.com/browse/CLV
+
+Download page: http://www.atlassian.com/software/clover/download
+
+Source code: https://bitbucket.org/atlassian/gradle-clover-plugin
+
+Clover for Gradle is a plugin providing Gradle integration with Clover
+
+See also:
+  https://bitbucket.org/atlassian/clover
+  https://bitbucket.org/atlassian/grails-clover-plugin
+  https://bitbucket.org/atlassian/maven-clover2-plugin
+  https://bitbucket.org/atlassian/clover-examples
+
