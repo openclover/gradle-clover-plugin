@@ -21,10 +21,17 @@ class TestWithCloverTask extends CloverAbstractTask {
     def modifyTestClasspath() {
         def cloverCfg = cloverExtension(project)
         def testTask = project.tasks.findByName("test") as Test
-        testTask.classpath =
-                sourceSet(project, "test").output +
-                        project.configurations.getByName("testRuntime") +
-                        project.configurations.getByName(CloverConstants.CLOVER_CONFIGURATION_NAME)
+        if (cloverCfg.includesTestSourceRoots) {
+            testTask.classpath =
+                    cloverTestSourceSet(project).output +
+                            project.configurations.getByName(CloverConstants.CLOVER_TEST_RUNTIME_CONFIGURATION_NAME) +
+                            project.configurations.getByName(CloverConstants.CLOVER_CONFIGURATION_NAME)
+        } else {
+            testTask.classpath =
+                    sourceSet(project, "test").output +
+                            project.configurations.getByName("testRuntime") +
+                            project.configurations.getByName(CloverConstants.CLOVER_CONFIGURATION_NAME)
+        }
         logger.debug("Test with Clover for project {} is enabled, changing test task classpath to cloverized one: {}",
                 project.name, testTask.classpath.files)
 

@@ -20,13 +20,30 @@ class CloverConfigurationsAction {
             it.resources.srcDirs = mainSourceSet(project).resources.srcDirs
         }
 
+        javaConvention.sourceSets.create(CloverConstants.CLOVER_TEST_SOURCE_SETS) {
+            it.java.srcDirs = [("${project.buildDir}${File.separatorChar}$CloverConstants.DEFAULT_TEST_INSTR_DIR")]
+            it.resources.srcDirs = testSourceSet(project).resources.srcDirs
+            it.compileClasspath = project.files(cloverSourceSet(project).output,
+                    project.getConfigurations().getByName(CloverConstants.CLOVER_TEST_COMPILE_CONFIGURATION_NAME))
+            it.setRuntimeClasspath(project.files(cloverTestSourceSet(project).output,
+                    mainSourceSet(project).output,
+                    project.getConfigurations().getByName(CloverConstants.CLOVER_TEST_RUNTIME_CONFIGURATION_NAME)));
+        }
+
         project.configurations.getByName(CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME) {
             description CloverConstants.CLOVER_COMPILE_CFG_DESC
             extendsFrom project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME)
         }
+        project.configurations.getByName(CloverConstants.CLOVER_TEST_COMPILE_CONFIGURATION_NAME) {
+            extendsFrom project.configurations.getByName(JavaPlugin.TEST_COMPILE_CONFIGURATION_NAME)
+        }
 
         project.configurations.getByName(CloverConstants.CLOVER_RUNTIME_CONFIGURATION_NAME) {
             extendsFrom project.configurations.getByName(JavaPlugin.RUNTIME_CONFIGURATION_NAME)
+        }
+
+        project.configurations.getByName(CloverConstants.CLOVER_TEST_RUNTIME_CONFIGURATION_NAME) {
+            extendsFrom project.configurations.getByName(JavaPlugin.TEST_RUNTIME_CONFIGURATION_NAME)
         }
 
         project.configurations.create(CloverConstants.CLOVER_CONFIGURATION_NAME) {

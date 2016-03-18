@@ -12,7 +12,8 @@ import static com.atlassian.gradle.plugin.clover.util.CloverUtil.*
 class CloverTasksAction {
 
     void configure(Project project) {
-        createInstrumentTask(project)
+        createInstrumentMainSourcesTask(project)
+        createInstrumentTestSourcesTask(project)
         setupTestsWithClover(project)
         createMergeTask(project)
         createReportTask(project)
@@ -21,7 +22,7 @@ class CloverTasksAction {
         setupLicenseMappings(project)
     }
 
-    private void createInstrumentTask(Project project) {
+    private void createInstrumentMainSourcesTask(Project project) {
         def cloverPluginExtension = cloverExtension(project)
 
         def cloverInstrument = project.tasks.create("cloverInstrument", InstrumentTask.class)
@@ -40,6 +41,26 @@ class CloverTasksAction {
 
         cloverInstrument.conventionMapping.map("outputDir") {
             cloverSourceSet(project).java.srcDirs.find()
+        }
+    }
+
+    private void createInstrumentTestSourcesTask(Project project) {
+        def cloverPluginExtension = cloverExtension(project)
+
+        def cloverTestInstrument = project.tasks.create("cloverTestInstrument", InstrumentTask.class)
+        cloverTestInstrument.onlyIf({
+            cloverPluginExtension.automaticIntegration && cloverPluginExtension.includesTestSourceRoots
+        })
+
+        project.tasks.getByName("cloverTestClasses").dependsOn cloverTestInstrument
+        project.tasks.getByName("test").dependsOn "cloverTestClasses"
+
+        cloverTestInstrument.conventionMapping.map("instrumentFiles") {
+            testSourceSet(project).allJava
+        }
+
+        cloverTestInstrument.conventionMapping.map("outputDir") {
+            cloverTestSourceSet(project).java.srcDirs.find()
         }
     }
 

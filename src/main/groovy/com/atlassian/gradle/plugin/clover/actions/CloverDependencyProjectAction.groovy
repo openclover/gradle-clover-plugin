@@ -21,6 +21,7 @@ class CloverDependencyProjectAction implements Action<Project> {
             if (!(compileDepend || cloverDepend)) {
                 log.info("Adding dependency on Clover to ${CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME} configuration")
                 project.dependencies.add(CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME, "com.atlassian.clover:clover:${CLOVER_JAR_VERSION}")
+                project.dependencies.add(CloverConstants.CLOVER_TEST_COMPILE_CONFIGURATION_NAME, "com.atlassian.clover:clover:${CLOVER_JAR_VERSION}")
             }
         }
     }

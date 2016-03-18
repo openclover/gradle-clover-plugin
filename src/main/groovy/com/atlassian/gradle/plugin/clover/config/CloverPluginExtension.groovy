@@ -20,6 +20,11 @@ class CloverPluginExtension {
 
     File cloverDatabase
 
+    /**
+     * Configures whether Clover plugin should instrument test sources
+     */
+    boolean includesTestSourceRoots = true
+
     int flushInterval = -1
     FlushPolicy flushPolicy = FlushPolicy.DIRECTED
     InstrumentationLevel instrumentation = InstrumentationLevel.STATEMENT
