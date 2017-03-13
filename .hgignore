@@ -1,0 +1,9 @@
+build/
+\.gradle/
+\.iml
+\.ipr
+\.iws
+\.idea/
+
+src-gen/
+\.clover/
