@@ -10,7 +10,7 @@ import org.gradle.api.plugins.JavaPlugin
 
 class CloverDependencyProjectAction implements Action<Project> {
 
-    static final String CLOVER_JAR_VERSION = "4.1.2"
+    static final String CLOVER_JAR_VERSION = "4.2.0-SNAPSHOT"
     private static final Logger log = Logging.getLogger(CloverDependencyProjectAction.class)
 
     @Override
