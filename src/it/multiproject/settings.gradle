@@ -1,0 +1,13 @@
+rootProject.name = 'clover-sample-multiproject'
+
+include ':clover-sample-multiproject-jar1'
+include ':clover-sample-multiproject-jar2'
+// https://bitbucket.org/openclover/clover/issues/12/clover-for-gradle-filenotfoundexception-on
+
+//include ':clover-sample-multiproject-war1'
+//include ':clover-sample-multiproject-ear1'
+
+project(':clover-sample-multiproject-jar1').projectDir = "$rootDir/jar1" as File
+project(':clover-sample-multiproject-jar2').projectDir = "$rootDir/jar2" as File
+//project(':clover-sample-multiproject-war1').projectDir = "$rootDir/war1" as File
+//project(':clover-sample-multiproject-ear1').projectDir = "$rootDir/ear1" as File

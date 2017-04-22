@@ -1,0 +1,5 @@
+
+description = 'Clover Maven Plugin Multiproject Sample - JAR 2'
+dependencies {
+  compile project(':clover-sample-multiproject-jar1')
+}

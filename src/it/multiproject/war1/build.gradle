@@ -1,0 +1,7 @@
+apply plugin: 'war'
+
+jar.enabled = true
+description = 'Clover Maven Plugin Multiproject Sample - WAR 1'
+dependencies {
+  compile project(':clover-sample-multiproject-jar1')
+}
