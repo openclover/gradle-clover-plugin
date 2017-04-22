@@ -3,6 +3,7 @@ package com.atlassian.gradle.plugin.clover.tasks.test
 import com.atlassian.clover.CloverNames
 import com.atlassian.gradle.plugin.clover.CloverConstants
 import com.atlassian.gradle.plugin.clover.tasks.CloverAbstractTask
+import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.testing.Test
 
@@ -29,7 +30,7 @@ class TestWithCloverTask extends CloverAbstractTask {
         } else {
             testTask.classpath =
                     sourceSet(project, "test").output +
-                            project.configurations.getByName("testRuntime") +
+                            project.configurations.getByName(JavaPlugin.TEST_RUNTIME_CLASSPATH_CONFIGURATION_NAME) +
                             project.configurations.getByName(CloverConstants.CLOVER_CONFIGURATION_NAME)
         }
         logger.debug("Test with Clover for project {} is enabled, changing test task classpath to cloverized one: {}",

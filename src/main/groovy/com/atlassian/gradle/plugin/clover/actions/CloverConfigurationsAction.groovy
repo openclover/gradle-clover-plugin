@@ -32,18 +32,19 @@ class CloverConfigurationsAction {
 
         project.configurations.getByName(CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME) {
             description CloverConstants.CLOVER_COMPILE_CFG_DESC
-            extendsFrom project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME)
+            extendsFrom project.configurations.getByName(JavaPlugin.COMPILE_CLASSPATH_CONFIGURATION_NAME)
         }
         project.configurations.getByName(CloverConstants.CLOVER_TEST_COMPILE_CONFIGURATION_NAME) {
             extendsFrom project.configurations.getByName(JavaPlugin.TEST_COMPILE_CONFIGURATION_NAME)
+            extendsFrom project.configurations.getByName(CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME)
         }
 
         project.configurations.getByName(CloverConstants.CLOVER_RUNTIME_CONFIGURATION_NAME) {
-            extendsFrom project.configurations.getByName(JavaPlugin.RUNTIME_CONFIGURATION_NAME)
+            extendsFrom project.configurations.getByName(JavaPlugin.RUNTIME_CLASSPATH_CONFIGURATION_NAME)
         }
 
         project.configurations.getByName(CloverConstants.CLOVER_TEST_RUNTIME_CONFIGURATION_NAME) {
-            extendsFrom project.configurations.getByName(JavaPlugin.TEST_RUNTIME_CONFIGURATION_NAME)
+            extendsFrom project.configurations.getByName(JavaPlugin.TEST_RUNTIME_CLASSPATH_CONFIGURATION_NAME)
         }
 
         project.configurations.create(CloverConstants.CLOVER_CONFIGURATION_NAME) {
