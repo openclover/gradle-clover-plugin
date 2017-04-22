@@ -1,0 +1,6 @@
+apply plugin: 'ear'
+description = 'Clover Maven Plugin Multiproject Sample - EAR 1'
+
+dependencies {
+    compile project(':clover-sample-multiproject-war1')
+}

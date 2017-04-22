@@ -1,0 +1,5 @@
+rootProject.name = 'clover-gradle-plugin-samples'
+
+include 'simple'
+
+// Clover aggregation doesn't support multi nested project structure
