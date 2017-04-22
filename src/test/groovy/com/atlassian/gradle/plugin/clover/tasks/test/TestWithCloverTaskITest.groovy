@@ -53,7 +53,7 @@ class TestWithCloverTaskITest extends CloverBaseITCase {
 
         //then
         assert result.task(":testWithClover").outcome == TaskOutcome.SKIPPED
-        assert result.task(":test").outcome == TaskOutcome.UP_TO_DATE
+        assert result.task(":test").outcome == TaskOutcome.NO_SOURCE
     }
 
 }
