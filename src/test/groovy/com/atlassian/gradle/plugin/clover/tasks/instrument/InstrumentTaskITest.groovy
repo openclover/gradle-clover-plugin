@@ -99,7 +99,7 @@ class InstrumentTaskITest extends CloverBaseITCase {
 
         assert instrument == TaskOutcome.SKIPPED
         assert compile == TaskOutcome.NO_SOURCE
-        assert resources == TaskOutcome.UP_TO_DATE
+        assert resources == TaskOutcome.NO_SOURCE
         assert classes == TaskOutcome.UP_TO_DATE
         assert !cloverDbFile.exists()
     }
