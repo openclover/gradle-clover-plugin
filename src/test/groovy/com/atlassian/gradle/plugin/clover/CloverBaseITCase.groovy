@@ -34,7 +34,7 @@ class CloverBaseITCase {
     protected BuildResult runGradle(String script, List<String> arguments) {
         List<File> pluginClasspath = pluginClasspath()
 
-        def text = "plugins { id 'clover'} \n" + script
+        def text = "plugins { id 'clover'} \n repositories { mavenLocal()\n mavenCentral() }" + script
         testProjectDir.sourceFile("build.gradle", text)
 
         def debugRunner = Boolean.parseBoolean(System.getProperty("debug.gradle.runner", "true"))

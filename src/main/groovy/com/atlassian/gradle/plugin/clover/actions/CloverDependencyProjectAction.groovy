@@ -10,7 +10,7 @@ import org.gradle.api.plugins.JavaPlugin
 
 class CloverDependencyProjectAction implements Action<Project> {
 
-    static final String CLOVER_JAR_VERSION = "4.2.0-SNAPSHOT"
+    static final String CLOVER_JAR_VERSION = "4.2.0"
     private static final Logger log = Logging.getLogger(CloverDependencyProjectAction.class)
 
     @Override
@@ -20,8 +20,8 @@ class CloverDependencyProjectAction implements Action<Project> {
             def cloverDepend = dependsOnCloverJar(project, CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME)
             if (!(compileDepend || cloverDepend)) {
                 log.info("Adding dependency on Clover to ${CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME} configuration")
-                project.dependencies.add(CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME, "com.atlassian.clover:clover:${CLOVER_JAR_VERSION}")
-                project.dependencies.add(CloverConstants.CLOVER_TEST_COMPILE_CONFIGURATION_NAME, "com.atlassian.clover:clover:${CLOVER_JAR_VERSION}")
+                project.dependencies.add(CloverConstants.CLOVER_COMPILE_CONFIGURATION_NAME, "org.openclover:clover:${CLOVER_JAR_VERSION}")
+                project.dependencies.add(CloverConstants.CLOVER_TEST_COMPILE_CONFIGURATION_NAME, "org.openclover:clover:${CLOVER_JAR_VERSION}")
             }
         }
     }
@@ -40,7 +40,7 @@ class CloverDependencyProjectAction implements Action<Project> {
 
     private Closure<Boolean> isCloverDependency() {
         { dependency ->
-            dependency.group == "com.atlassian.clover" && dependency.name == "clover"
+            dependency.group == "org.openclover" && dependency.name == "clover"
         }
     }
 }

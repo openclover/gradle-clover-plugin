@@ -6,6 +6,10 @@ description = pluginDescription
 version = pluginVersion
 group = pluginGroup
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
 task createClassPathManifest {
     ext.outputDir = file("$projectDir/src-gen/test/resources")
     inputs.files sourceSets.main.runtimeClasspath
@@ -31,7 +35,7 @@ processTestResources.dependsOn createClassPathManifest
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile group: 'com.atlassian.clover', name: 'clover', version: cloverVersion
+    compile group: 'org.openclover', name: 'clover', version: cloverVersion
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'

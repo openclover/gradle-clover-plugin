@@ -30,7 +30,7 @@ class TestWithCloverTaskITest extends CloverBaseITCase {
             }
             dependencies {
                 testCompile group: 'junit', name: 'junit', version: '4.+'
-                cloverCompile group: 'com.atlassian.clover', name: 'clover', version: '${cloverJarVersion}'
+                cloverCompile group: 'org.openclover', name: 'clover', version: '${cloverJarVersion}'
             }
             """, "test")
 
