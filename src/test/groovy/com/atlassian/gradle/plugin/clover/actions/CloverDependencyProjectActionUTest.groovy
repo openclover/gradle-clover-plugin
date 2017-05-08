@@ -103,7 +103,7 @@ class CloverDependencyProjectActionUTest extends CloverBaseUTCase {
 
         //then
         def cloverDep = project.configurations.findByName("cloverCompile").allDependencies.find {
-            it.group == "com.atlassian.clover" && it.name == "clover"
+            it.group == "org.openclover" && it.name == "clover"
         }
 
         assert cloverDep == null

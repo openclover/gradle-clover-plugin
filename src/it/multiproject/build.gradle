@@ -2,7 +2,7 @@ allprojects {
     apply plugin: 'maven'
     apply plugin: 'clover'
 
-    group = 'com.atlassian.maven.plugins.sample'
+    group = 'org.openclover.gradle.plugins.sample'
     version = '1.0-SNAPSHOT'
 }
 
