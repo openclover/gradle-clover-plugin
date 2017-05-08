@@ -31,7 +31,7 @@ class CloverDependencyProjectActionUTest extends CloverBaseUTCase {
 
         //then
         def cloverDep = project.configurations.findByName("cloverCompile").allDependencies.find {
-            it.group == "com.atlassian.clover" && it.name == "clover"
+            it.group == "org.openclover" && it.name == "clover"
         }
 
         assert cloverDep != null
@@ -49,7 +49,7 @@ class CloverDependencyProjectActionUTest extends CloverBaseUTCase {
                 mavenLocal()
             }
             dependencies {
-                compile "com.atlassian.clover:clover:4.0.6"
+                compile "org.openclover:clover:4.2.0-SNAPSHOT"
             }
         }
 
@@ -58,11 +58,11 @@ class CloverDependencyProjectActionUTest extends CloverBaseUTCase {
 
         //then
         def cloverDep = project.configurations.findByName("cloverCompile").allDependencies.find {
-            it.group == "com.atlassian.clover" && it.name == "clover"
+            it.group == "org.openclover" && it.name == "clover"
         }
 
         assert cloverDep != null
-        assert cloverDep.version == "4.0.6"
+        assert cloverDep.version == "4.2.0-SNAPSHOT"
     }
 
     @Test
@@ -76,7 +76,7 @@ class CloverDependencyProjectActionUTest extends CloverBaseUTCase {
                 mavenLocal()
             }
             dependencies {
-                cloverCompile "com.atlassian.clover:clover:4.0.6"
+                cloverCompile "org.openclover:clover:4.2.0-SNAPSHOT"
             }
         }
 
@@ -85,11 +85,11 @@ class CloverDependencyProjectActionUTest extends CloverBaseUTCase {
 
         //then
         def cloverDep = project.configurations.findByName("cloverCompile").allDependencies.find {
-            it.group == "com.atlassian.clover" && it.name == "clover"
+            it.group == "org.openclover" && it.name == "clover"
         }
 
         assert cloverDep != null
-        assert cloverDep.version == "4.0.6"
+        assert cloverDep.version == "4.2.0-SNAPSHOT"
     }
 
     @Test
