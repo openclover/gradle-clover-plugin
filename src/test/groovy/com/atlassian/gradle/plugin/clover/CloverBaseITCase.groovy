@@ -34,10 +34,19 @@ class CloverBaseITCase {
     protected BuildResult runGradle(String script, List<String> arguments) {
         List<File> pluginClasspath = pluginClasspath()
 
-        def text = "plugins { id 'clover'} \n repositories { mavenLocal()\n mavenCentral() }" + script
+        def text = """
+                      plugins {
+                            id 'java'
+                            id 'clover'
+                      }
+                      allprojects {
+                        repositories { 
+                            mavenLocal()
+                            mavenCentral() 
+                        }} \r\n""" + script
         testProjectDir.sourceFile("build.gradle", text)
 
-        def debugRunner = Boolean.parseBoolean(System.getProperty("debug.gradle.runner", "true"))
+        def debugRunner = Boolean.parseBoolean(System.getProperty("debug.gradle.runner", "false"))
         println "Effective debug gradle runner value is: $debugRunner"
         if (isNullOrEmpty(System.getProperty("GRADLE_USER_HOME"))) {
             println """WARN: When GRADLE_USER_HOME property not set to your local .gradle directory.
@@ -47,7 +56,7 @@ class CloverBaseITCase {
                 .withProjectDir(testProjectDir.root)
                 .withPluginClasspath(pluginClasspath)
                 .withDebug(debugRunner)
-                .withArguments(arguments + ["--stacktrace", "--debug", "-Dgradle.user.home=${System.getProperty("GRADLE_USER_HOME")}"] as String[])
+                .withArguments(arguments + ["-Dgradle.user.home=${System.getProperty("GRADLE_USER_HOME")}"] as String[])
                 .forwardOutput()
                 .build()
     }
