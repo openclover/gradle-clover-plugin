@@ -80,6 +80,7 @@ publishing {
         maven {
             // put target repository here
         }
+        mavenLocal()
     }
 }
 
