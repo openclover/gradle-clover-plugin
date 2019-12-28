@@ -2,7 +2,7 @@ rootProject.name = 'clover-sample-multiproject'
 
 include ':clover-sample-multiproject-jar1'
 include ':clover-sample-multiproject-jar2'
-// https://bitbucket.org/openclover/clover/issues/12/clover-for-gradle-filenotfoundexception-on
+// https://github.com/openclover/clover/issues/12 - Clover for Gradle: FileNotFoundException
 
 //include ':clover-sample-multiproject-war1'
 //include ':clover-sample-multiproject-ear1'
